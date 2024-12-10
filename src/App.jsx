@@ -23,12 +23,16 @@ function App() {
       };
     });
   }
+
+  //Check if values entered are valid
+  const inputIsValid = userInput.duration >= 1;
   
   return (
     <>
       <Header />
       <Inputs currentInputs={userInput} onChangeInput={handleChangeValue}/>
-      <Results currentInputs={userInput} initialInvestment={userInput.initialInvestment}/>
+      {!inputIsValid && <p className="center">Please enter a duration greater than zero</p>}
+      {inputIsValid && <Results currentInputs={userInput} initialInvestment={userInput.initialInvestment}/>}
     </>    
   )
 }
